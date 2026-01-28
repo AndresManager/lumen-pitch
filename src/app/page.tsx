@@ -51,7 +51,7 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
   };
 
   return (
-    <div className="w-screen h-screen bg-white flex items-center justify-center relative overflow-hidden">
+    <div className="w-screen h-screen bg-white flex items-center justify-center relative overflow-hidden px-4">
       {/* Background pattern */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.03]"
@@ -61,30 +61,30 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
         }}
       />
 
-      {/* Corner decorations */}
-      <div className="absolute top-8 left-8 w-16 h-16 border-t-2 border-l-2 border-[#0D0D0D]" />
-      <div className="absolute top-8 right-8 w-16 h-16 border-t-2 border-r-2 border-[#0D0D0D]" />
-      <div className="absolute bottom-8 left-8 w-16 h-16 border-b-2 border-l-2 border-[#0D0D0D]" />
-      <div className="absolute bottom-8 right-8 w-16 h-16 border-b-2 border-r-2 border-[#0D0D0D]" />
+      {/* Corner decorations - hidden on mobile */}
+      <div className="hidden sm:block absolute top-8 left-8 w-16 h-16 border-t-2 border-l-2 border-[#0D0D0D]" />
+      <div className="hidden sm:block absolute top-8 right-8 w-16 h-16 border-t-2 border-r-2 border-[#0D0D0D]" />
+      <div className="hidden sm:block absolute bottom-8 left-8 w-16 h-16 border-b-2 border-l-2 border-[#0D0D0D]" />
+      <div className="hidden sm:block absolute bottom-8 right-8 w-16 h-16 border-b-2 border-r-2 border-[#0D0D0D]" />
 
       <motion.div
-        className="w-full max-w-md px-8 z-10"
+        className="w-full max-w-md px-4 sm:px-8 z-10"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
         {/* Logo */}
-        <div className="text-center mb-12">
-          <h1 className="font-serif text-[72px] font-bold text-[#0D0D0D] leading-none tracking-tight">
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="font-serif text-5xl sm:text-[72px] font-bold text-[#0D0D0D] leading-none tracking-tight">
             LUMEN
           </h1>
-          <p className="text-[#9A9187] text-sm mt-4 uppercase tracking-[0.2em]">
+          <p className="text-[#9A9187] text-xs sm:text-sm mt-3 sm:mt-4 uppercase tracking-[0.2em]">
             Investor Pitch Deck
           </p>
         </div>
 
         {/* Login form */}
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
           <div>
             <label className="block text-[#9A9187] text-xs font-bold uppercase tracking-wider mb-2">
               Usuario
@@ -93,7 +93,7 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-4 bg-[#F5F0E8] border border-[#E8E0D5] text-[#0D0D0D] text-base focus:outline-none focus:border-[#0D0D0D] transition-colors"
+              className="w-full px-4 py-3 sm:py-4 bg-[#F5F0E8] border border-[#E8E0D5] text-[#0D0D0D] text-base focus:outline-none focus:border-[#0D0D0D] transition-colors"
               placeholder="Ingrese su usuario"
               required
             />
@@ -107,7 +107,7 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-4 bg-[#F5F0E8] border border-[#E8E0D5] text-[#0D0D0D] text-base focus:outline-none focus:border-[#0D0D0D] transition-colors"
+              className="w-full px-4 py-3 sm:py-4 bg-[#F5F0E8] border border-[#E8E0D5] text-[#0D0D0D] text-base focus:outline-none focus:border-[#0D0D0D] transition-colors"
               placeholder="Ingrese su contraseña"
               required
             />
@@ -132,7 +132,7 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full py-4 bg-[#0D0D0D] text-white font-bold text-sm uppercase tracking-wider hover:bg-[#1A1A1A] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full py-3 sm:py-4 bg-[#0D0D0D] text-white font-bold text-sm uppercase tracking-wider hover:bg-[#1A1A1A] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {isLoading ? (
               <>
@@ -155,7 +155,7 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
         </form>
 
         {/* Footer note */}
-        <p className="text-center text-[#C4B8A8] text-xs mt-8">
+        <p className="text-center text-[#C4B8A8] text-xs mt-6 sm:mt-8">
           Contenido confidencial para inversionistas
         </p>
       </motion.div>
@@ -248,24 +248,24 @@ function PitchDeck() {
       </div>
 
       {/* Navigation bar */}
-      <nav className="h-20 bg-[#0D0D0D] flex items-center justify-between px-8">
+      <nav className="h-16 sm:h-20 bg-[#0D0D0D] flex items-center justify-between px-3 sm:px-8">
         {/* Left - Prev button */}
         <button
           onClick={prevSlide}
           disabled={currentSlide === 0}
-          className="flex items-center gap-2 text-white/60 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          className="flex items-center gap-1 sm:gap-2 text-white/60 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
         >
-          <span className="material-symbols-outlined text-xl">chevron_left</span>
-          <span className="text-sm font-medium">Anterior</span>
+          <span className="material-symbols-outlined text-lg sm:text-xl">chevron_left</span>
+          <span className="text-xs sm:text-sm font-medium hidden sm:inline">Anterior</span>
         </button>
 
         {/* Center - Slide indicators */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
           {slides.map((slide, index) => (
             <button
               key={slide.id}
               onClick={() => goToSlide(index)}
-              className={`group flex items-center gap-2 px-3 py-2 rounded transition-all ${
+              className={`group flex items-center gap-1 sm:gap-2 px-1.5 sm:px-3 py-1.5 sm:py-2 rounded transition-all ${
                 index === currentSlide
                   ? 'bg-white/10'
                   : 'hover:bg-white/5'
@@ -274,14 +274,14 @@ function PitchDeck() {
               <div
                 className={`w-2 h-2 rounded-full transition-all ${
                   index === currentSlide
-                    ? 'bg-white w-6'
+                    ? 'bg-white sm:w-6'
                     : index < currentSlide
                     ? 'bg-[#C4B8A8]'
                     : 'bg-white/30'
                 }`}
               />
               <span
-                className={`text-xs font-medium transition-all ${
+                className={`text-xs font-medium transition-all hidden sm:inline ${
                   index === currentSlide
                     ? 'text-white opacity-100'
                     : 'text-white/50 opacity-0 group-hover:opacity-100'
@@ -294,14 +294,14 @@ function PitchDeck() {
         </div>
 
         {/* Right - Next button & Logout */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <button
             onClick={nextSlide}
             disabled={currentSlide === slides.length - 1}
-            className="flex items-center gap-2 bg-white text-[#0D0D0D] px-4 py-2 font-medium text-sm disabled:opacity-30 disabled:cursor-not-allowed transition-colors hover:bg-[#E8E0D5]"
+            className="flex items-center gap-1 sm:gap-2 bg-white text-[#0D0D0D] px-2 sm:px-4 py-1.5 sm:py-2 font-medium text-xs sm:text-sm disabled:opacity-30 disabled:cursor-not-allowed transition-colors hover:bg-[#E8E0D5]"
           >
-            <span>Siguiente</span>
-            <span className="material-symbols-outlined text-xl">chevron_right</span>
+            <span className="hidden sm:inline">Siguiente</span>
+            <span className="material-symbols-outlined text-lg sm:text-xl">chevron_right</span>
           </button>
 
           <button

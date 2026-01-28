@@ -13,7 +13,7 @@ const metrics = [
 
 export default function SlideTraccion() {
   return (
-    <div className="w-full h-full flex flex-col bg-white relative overflow-hidden">
+    <div className="w-full h-full flex flex-col bg-white relative overflow-hidden overflow-y-auto">
       {/* Background pattern */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.02]"
@@ -25,52 +25,51 @@ export default function SlideTraccion() {
 
       {/* Header */}
       <motion.header
-        className="pt-16 px-16 pb-8"
+        className="pt-6 sm:pt-16 px-4 sm:px-16 pb-4 sm:pb-8"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <h1 className="font-serif text-[56px] font-bold text-[#0D0D0D] leading-none tracking-tight">
+        <h1 className="font-serif text-2xl sm:text-4xl md:text-[56px] font-bold text-[#0D0D0D] leading-tight tracking-tight">
           Ya está construido
         </h1>
       </motion.header>
 
       {/* Metrics grid */}
-      <main className="flex-1 px-16 pb-8">
-        <div className="grid grid-cols-3 gap-6 h-full">
+      <main className="flex-1 px-4 sm:px-16 pb-4 sm:pb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-6 h-auto sm:h-full">
           {metrics.map((metric, index) => (
             <motion.div
               key={metric.label}
-              className={`flex flex-col items-center justify-center p-8 ${
+              className={`flex flex-col items-center justify-center p-4 sm:p-8 ${
                 index === 2 ? 'bg-[#0D0D0D] text-white' : 'bg-[#F5F0E8]'
               }`}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 + index * 0.1 }}
-              whileHover={{ scale: 1.02 }}
             >
               <span
-                className={`material-symbols-outlined text-4xl mb-4 ${
+                className={`material-symbols-outlined text-2xl sm:text-4xl mb-2 sm:mb-4 ${
                   index === 2 ? 'text-[#C4B8A8]' : 'text-[#9A9187]'
                 }`}
               >
                 {metric.icon}
               </span>
               <p
-                className={`text-[64px] font-black leading-none tracking-tight ${
+                className={`text-3xl sm:text-5xl md:text-[64px] font-black leading-none tracking-tight ${
                   index === 2 ? 'text-white' : 'text-[#0D0D0D]'
                 }`}
               >
                 {metric.value}
               </p>
               <p
-                className={`text-lg font-bold mt-2 ${
+                className={`text-sm sm:text-lg font-bold mt-1 sm:mt-2 ${
                   index === 2 ? 'text-white' : 'text-[#0D0D0D]'
                 }`}
               >
                 {metric.label}
               </p>
               <p
-                className={`text-sm ${
+                className={`text-xs sm:text-sm ${
                   index === 2 ? 'text-[#C4B8A8]' : 'text-[#9A9187]'
                 }`}
               >
@@ -83,19 +82,19 @@ export default function SlideTraccion() {
 
       {/* Footer - Time */}
       <motion.footer
-        className="px-16 pb-8"
+        className="px-4 sm:px-16 pb-4 sm:pb-8"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8 }}
       >
-        <div className="bg-[#0D0D0D] py-6 flex flex-col items-center justify-center">
-          <div className="flex items-center gap-3 mb-2">
-            <span className="material-symbols-outlined text-[#C4B8A8] text-3xl">
+        <div className="bg-[#0D0D0D] py-4 sm:py-6 flex flex-col items-center justify-center">
+          <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
+            <span className="material-symbols-outlined text-[#C4B8A8] text-2xl sm:text-3xl">
               schedule
             </span>
-            <p className="text-white text-5xl font-black">8 MESES</p>
+            <p className="text-white text-3xl sm:text-5xl font-black">8 MESES</p>
           </div>
-          <p className="text-[#C4B8A8] text-lg font-medium">
+          <p className="text-[#C4B8A8] text-sm sm:text-lg font-medium text-center px-4">
             "Velocidad de ejecución de clase mundial"
           </p>
         </div>
