@@ -225,9 +225,9 @@ function PitchDeck() {
   };
 
   return (
-    <div className="w-screen h-screen bg-white overflow-hidden flex flex-col">
-      {/* Main content */}
-      <div className="flex-1 relative overflow-hidden">
+    <div className="w-screen h-screen bg-white overflow-hidden relative">
+      {/* Main content - with padding for fixed nav */}
+      <div className="absolute inset-0 pb-16 sm:pb-20 overflow-hidden">
         <AnimatePresence initial={false} custom={direction} mode="wait">
           <motion.div
             key={currentSlide}
@@ -247,8 +247,8 @@ function PitchDeck() {
         </AnimatePresence>
       </div>
 
-      {/* Navigation bar */}
-      <nav className="h-16 sm:h-20 bg-[#0D0D0D] flex items-center justify-between px-3 sm:px-8">
+      {/* Navigation bar - FIXED at bottom */}
+      <nav className="fixed bottom-0 left-0 right-0 h-16 sm:h-20 bg-[#0D0D0D] flex items-center justify-between px-3 sm:px-8 z-50">
         {/* Left - Prev button */}
         <button
           onClick={prevSlide}
