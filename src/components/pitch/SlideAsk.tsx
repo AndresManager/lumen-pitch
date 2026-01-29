@@ -13,14 +13,14 @@ const projectionData = [
 
 const benefits = [
   {
-    icon: 'payments',
-    title: '35% ANUAL sobre su inversión',
-    subtitle: 'Desde el año 1 — Nuestro compromiso',
+    icon: 'trending_up',
+    title: 'ROI 3x-4x PROYECTADO',
+    subtitle: 'Basado en valoración a 3 años',
   },
   {
-    icon: 'calendar_month',
-    title: 'DIVIDENDOS MENSUALES',
-    subtitle: 'A partir del año 2 (inicio de rentabilidad)',
+    icon: 'pie_chart',
+    title: 'DIVIDENDOS PROPORCIONALES',
+    subtitle: '20-25% equity = tu % de utilidades (desde año 2)',
   },
   {
     icon: 'rocket_launch',
@@ -169,6 +169,26 @@ export default function SlideAsk() {
           </div>
         </motion.section>
       </div>
+
+      {/* Valuation note */}
+      <motion.footer
+        className="px-4 sm:px-16 pb-4 sm:pb-6"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8 }}
+      >
+        <div className="bg-[#F5F0E8] border-l-4 border-[#0D0D0D] px-4 sm:px-6 py-3 sm:py-4 flex items-start sm:items-center gap-3 sm:gap-4">
+          <span className="material-symbols-outlined text-[#0D0D0D] text-xl sm:text-2xl flex-shrink-0">
+            info
+          </span>
+          <div>
+            <p className="text-[#0D0D0D] text-xs sm:text-sm">
+              <strong>$4M = 20-25% equity.</strong> ROI proyectado basado en valoración 2028 (~$60M con $6M ARR).
+              Dividendos proporcionales a participación desde año 2.
+            </p>
+          </div>
+        </div>
+      </motion.footer>
     </div>
   );
 }
